@@ -1,0 +1,17 @@
+[user]
+	email = 25392586+Kehashi91@users.noreply.github.com
+	name = Kehashi91
+
+[alias]
+	s = status -s
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	c = clone --recursive
+	ca = !git add -A && git commit -av
+	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+	graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+	amend = commit --amend --reuse-message=HEAD
+
