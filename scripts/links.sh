@@ -1,6 +1,6 @@
-ln -sv "~/.dotfiles/bash/.alias" ~
-ln -sv "~/.dotfiles/bash/.functions" ~
-ln -sv "~/.dotfiles/bash/.profile" ~
-ln -sv "~/.dotfiles/bash/.bashrc" ~
+ln -svf ~/.dotfiles/bash/.alias ~
+ln -svf ~/.dotfiles/bash/.profile ~
+ln -svf ~/.dotfiles/bash/.bashrc ~
 
-ln -sv "~/.dotfiles/git/.gitconfig" ~
+ln -svf ~/.dotfiles/git/.gitconfig ~
+ln -svf ~/.dotfiles/git/.gitignore_global ~

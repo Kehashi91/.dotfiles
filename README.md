@@ -3,11 +3,16 @@ My dotfiles.
 Before install:
 - check newest Python version
 - check newest Pycharm version
+- check newest docker-compose version
 
 To start:
-
 ```commandline
-$ git clone https://github.com/webpro/dotfiles.git
+$ sudo apt install git
+$ git clone https://github.com/Kehashi91/.dotfiles
 $ cd .dotfiles
 $ ./install.sh
+```
+After installation:
+```commandline
+$ poetry completions bash >> ~/.bash_completion
 ```

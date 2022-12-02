@@ -8,3 +8,5 @@ sudo apt-get -y dist-upgrade
 
 source scripts/install_apps.sh
 source scripts/links.sh
+git config --global core.excludesfile ~/.gitignore_global
+

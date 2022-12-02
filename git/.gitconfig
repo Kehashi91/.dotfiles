@@ -2,6 +2,9 @@
 	email = 25392586+Kehashi91@users.noreply.github.com
 	name = Kehashi91
 
+[core]
+	excludesfile = /home/test/.gitignore_global
+
 [alias]
 	s = status -s
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
@@ -14,4 +17,3 @@
 	branches = branch -a
 	remotes = remote -v
 	amend = commit --amend --reuse-message=HEAD
-
