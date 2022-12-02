@@ -49,7 +49,7 @@ curl -sSL https://install.python-poetry.org | python3 -
 cd temp
 wget https://download.jetbrains.com/python/pycharm-community-2022.2.4.tar.gz
 sudo tar -xzf pycharm-*.tar.gz -C /opt/
-sudo mv opt/pycharm-*.tar.gz  /opt/pycharm
+sudo mv /opt/pycharm-* /opt/pycharm
 sudo ln -svf ~/.dotfiles/misc/pycharm.desktop /usr/share/applications/pycharm.desktop
 cd ~
 
@@ -72,5 +72,5 @@ curl -SL https://github.com/docker/compose/releases/download/v2.13.0/docker-comp
 chmod +x ~/.docker/cli-plugins/docker-compose
 
 
-rm -rf temp
+sudo rm -rf temp
 cd ~/.dotfiles

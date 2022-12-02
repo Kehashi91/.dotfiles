@@ -1,5 +1,8 @@
 My dotfiles.
 
+Tested on:
+- Ubuntu 22.04
+
 Before install:
 - check newest Python version
 - check newest Pycharm version
