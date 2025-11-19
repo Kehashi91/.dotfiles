@@ -3,7 +3,7 @@
 	name = Kehashi91
 
 [core]
-	excludesfile = /home/test/.gitignore_global
+	excludesfile = /home/adam/.gitignore_global
 
 [alias]
 	s = status -s

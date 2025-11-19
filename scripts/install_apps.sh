@@ -1,8 +1,23 @@
+for ARGUMENT in "$@"
+do
+   KEY=$(echo $ARGUMENT | cut -f1 -d=)
+
+   KEY_LENGTH=${#KEY}
+   VALUE="${ARGUMENT:$KEY_LENGTH+1}"
+
+   export "$KEY"="$VALUE"
+done
+
+echo "versions:"
+echo "python = $python_version"
+echo "pycharm = $pycharm_version"
+
+
 sudo apt install -y \
     build-essential \
     python3-distutils \
     python-setuptools \
-    python-pip \
+    python3-pip \
     python3-dev \
     libsqlite3-dev \
     libc6-dev \
@@ -32,9 +47,9 @@ sudo apt install -y \
 cd ~
 mkdir -p temp
 cd temp
-wget https://www.python.org/ftp/python/3.9.15/Python-3.9.15.tgz
-tar -xzf Python-3.9.15.tgz
-cd Python-3.9.15
+wget https://www.python.org/ftp/python/$python_version/Python-$python_version.tgz
+tar -xzf Python-$python_version.tgz
+cd Python-$python_version
 ./configure
 sudo make install
 
@@ -47,7 +62,7 @@ curl https://pyenv.run | bash
 curl -sSL https://install.python-poetry.org | python3 -
 
 cd temp
-wget https://download.jetbrains.com/python/pycharm-community-2022.2.4.tar.gz
+wget https://download.jetbrains.com/python/pycharm-community-$pycharm_version.tar.gz
 sudo tar -xzf pycharm-*.tar.gz -C /opt/
 sudo mv /opt/pycharm-* /opt/pycharm
 sudo ln -svf ~/.dotfiles/misc/pycharm.desktop /usr/share/applications/pycharm.desktop
@@ -58,19 +73,17 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 sudo snap install --classic code
 sudo snap install --classic postman
 
-sudo mkdir -p /etc/apt/keyrings
-
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-echo \
-"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
+# Add Docker's official GPG key:
 sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
-mkdir -p ~/.docker/cli-plugins/
-curl -SL https://github.com/docker/compose/releases/download/v2.13.0/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
-chmod +x ~/.docker/cli-plugins/docker-compose
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 sudo rm -rf temp
 cd ~/.dotfiles
