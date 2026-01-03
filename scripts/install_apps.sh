@@ -83,5 +83,7 @@ sudo cp misc/docker.source /etc/apt/sources.list.d
 
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 sudo rm -rf temp
 cd ~/.dotfiles

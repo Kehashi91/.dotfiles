@@ -1,12 +1,11 @@
 My dotfiles.
 
 Tested on:
-- Ubuntu 22.04
+- Ubuntu 24.04.3 
 
 Before install:
 - check newest Python version
 - check newest Pycharm version
-- check newest docker-compose version
 
 To start:
 ```commandline
